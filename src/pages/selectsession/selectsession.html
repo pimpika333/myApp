@@ -1,0 +1,102 @@
+<!--
+  Generated template for the SelectsessionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>selectsession</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  {{this.sessionName}}
+
+  <!--<ion-navbar color="tab">-->
+    <!--<ion-list>-->
+      <!--<ion-item  >-->
+        <!--<ion-label > &#45;&#45; Select Session &#45;&#45; </ion-label>-->
+        <!--<ion-select  [(ngModel)]="sessionName" (ionChange)="selectSession(itemSession)" >-->
+          <!--<ion-option *ngFor="let itemSession of session" [value]="itemSession.session_name" text-wrap>-->
+            <!--{{itemSession.session_name}}-->
+          <!--</ion-option>-->
+
+        <!--</ion-select>-->
+      <!--</ion-item>-->
+    <!--</ion-list>-->
+  <!--</ion-navbar>-->
+
+
+
+
+
+
+
+  <!--<ion-list no-border>-->
+    <!--<ion-list-header no-margin>-->
+      <!--{{dateAc.date_day |  date: 'MMMM dd, yyyy'}}<br>-->
+    <!--</ion-list-header>-->
+
+    <!--<p>-->
+
+      <!--<ion-avatar no-border *ngFor="let item of activityList"  text-wrap="">-->
+
+        <!--<ion-item no-border *ngIf="item.date_id == dateAc.date_id ">-->
+
+          <!--<ion-list-header align="center" color="body" > {{item.ac_s_time}} - {{item.ac_e_time}}-->
+
+            <!--<ion-fab  right middle>-->
+              <!--<button  (click)="like(item)" ion-fab mini color="body" icon-start>-->
+                <!--<ion-icon no-border name='ios-heart-outline' ></ion-icon>-->
+              <!--</button><br>-->
+            <!--</ion-fab>-->
+
+          <!--</ion-list-header>-->
+
+
+
+          <!--<h1 no-border *ngFor=" let i of activityOther"  text-wrap="">-->
+            <!--<ion-item no-lines no-border *ngIf="item.ac_id == i.ac_id" text-center>-->
+              <!--{{i.aco_name}}-->
+            <!--</ion-item>-->
+          <!--</h1>-->
+
+
+
+          <!--<h1 no-border *ngFor=" let j of activityPaper"  text-wrap="">-->
+            <!--<ion-item no-lines no-border *ngIf="item.ac_id == j.ac_id" text-center>-->
+              <!--{{j.paper_name}}-->
+            <!--</ion-item>-->
+          <!--</h1>-->
+
+
+          <!--<h1 no-border *ngFor=" let k of person" >-->
+            <!--<ion-item no-lines no-border *ngIf="item.person_id == k.person_id" >-->
+              <!--Session : {{item.session_name}}<br>-->
+              <!--Room : {{item.room_name}}<br>-->
+              <!--Chair : {{k.person_fname}} ({{k.person_institute}});{{item.chair_session_person}} <br>-->
+            <!--</ion-item>-->
+          <!--</h1>-->
+
+
+          <!--<button  ion-button color="content" icon-end (click)="goDetail(item)"   >-->
+            <!--Detail-->
+            <!--<ion-icon name='arrow-forward'></ion-icon>-->
+          <!--</button>-->
+
+
+        <!--</ion-item>-->
+
+      <!--</ion-avatar>-->
+
+    <!--</p>-->
+
+
+
+  <!--</ion-list>-->
+</ion-content>

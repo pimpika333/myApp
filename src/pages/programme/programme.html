@@ -1,0 +1,299 @@
+<ion-header>
+  <ion-navbar color="tab">
+    <ion-title class="title" text-center>
+      Program
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar  no-border-top>
+    <ion-item  no-lines>
+      <ion-label placeholder="">  Select Session  </ion-label>
+      <ion-select  [(ngModel)]="sessionName" (ionChange)="selectSession()">
+        <ion-option *ngFor="let itemSession of session" [value]="itemSession.session_name" >
+          {{itemSession.session_name}}
+        </ion-option>
+
+        <ion-option  [value]="all" >
+          {{all}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content text-center class="icons-basic-page" text-wrap >
+<!--new programme page-->
+    <!--<ion-navbar color="tab">-->
+      <!--<ion-list>-->
+        <!--<ion-item  >-->
+          <!--<ion-label > &#45;&#45; Select Session &#45;&#45; </ion-label>-->
+          <!--<ion-select  [(ngModel)]="sessionName" (ionChange)="selectSession()" >-->
+            <!--<ion-option *ngFor="let itemSession of session" [value]="itemSession.session_name" >-->
+              <!--{{itemSession.session_name}}-->
+            <!--</ion-option>-->
+
+            <!--<ion-option  [value]="all" >-->
+              <!--{{all}}-->
+            <!--</ion-option>-->
+          <!--</ion-select>-->
+        <!--</ion-item>-->
+      <!--</ion-list>-->
+    <!--</ion-navbar>-->
+
+
+  <ion-list no-border>
+
+      <ion-list-header no-margin>
+        <ion-badge no-margin>
+        {{dateAc.date_day |  date: 'MMMM dd, yyyy'}}<br>
+        </ion-badge>
+      </ion-list-header>
+
+
+<!----------------------------------------------program activity Other---------------------------------------------------------------------->
+      <div  *ngIf="this.sessionName == checked || this.sessionName == all">
+        <div *ngFor="let item of activityOther">
+          <div no-border no-lines *ngIf="item.date_id == dateAc.date_id">
+
+              <ion-avatar>
+                <ion-list>
+                  <ion-card>
+
+
+                    <ion-item-sliding  #slidingItem>
+                    <ion-item >
+                      <ion-navbar text-center sticky>
+                        <b text-wrap >
+                          {{item.aco_s_time }} - {{item.aco_e_time}}
+                        </b>
+                      </ion-navbar>
+                    </ion-item>
+                    <ion-item-options side="left">
+                      <button ion-button color="secondary" (click)="favorite_aco(slidingItem,item)">Favorite</button>
+                    </ion-item-options>
+                  </ion-item-sliding>
+
+
+                    <h2 text-center >
+                      {{item.aco_name}}<br>
+                    </h2>
+                    <ion-item no-lines no-border>
+                      Session : {{item.session_name}}<br>
+                      Room : {{item.room_name}}
+                    </ion-item>
+
+
+                        <button ion-button color="primary" (click)="goDetailOther(item)" clear icon-start>
+                          <ion-icon name='information-circle'></ion-icon>
+                          Detail
+                        </button>
+
+                  </ion-card>
+                </ion-list>
+              </ion-avatar>
+
+
+          </div>
+        </div>
+      </div>
+
+<!-----------------------------------------------------activityOther select session----------------------------------------------------------------------------->
+      <div *ngIf="this.sessionName != checked">
+        <div *ngFor="let item of activityOther">
+
+          <div no-border no-lines *ngIf="item.date_id == dateAc.date_id && item.session_name == this.sessionName ">
+
+            <ion-avatar>
+              <ion-list>
+                <ion-card>
+
+                  <ion-item-sliding  #slidingItem>
+                    <ion-item>
+                      <ion-navbar text-center color="secondary">
+                        <b style="color: white" text-wrap >
+                          {{item.aco_s_time }} - {{item.aco_e_time}}
+                        </b>
+                      </ion-navbar>
+                    </ion-item>
+                    <ion-item-options side="left">
+                      <button ion-button color="secondary" (click)="favorite_aco(slidingItem,item)">Favorite</button>
+                    </ion-item-options>
+                  </ion-item-sliding>
+
+
+                  <h2 text-center >
+                    {{item.aco_name}}<br>
+                  </h2>
+                  <ion-item no-lines no-border>
+                    Session : {{item.session_name}}<br>
+                    Room : {{item.room_name}}
+                  </ion-item>
+
+                </ion-card>
+              </ion-list>
+            </ion-avatar>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+<!-------------------------------------------------------------program activity paper---------------------------------------------------------------------------->
+
+    <div *ngIf="this.sessionName == checked || this.sessionName == all">
+
+      <div text-wrap no-border  *ngFor="let item of activityList">
+          <div no-border no-lines *ngIf="item.date_id == dateAc.date_id  ">
+
+            <ion-card>
+
+                  <ion-navbar  color="body">
+                    <div *ngFor="let session of session">
+                      <div *ngIf="item.session_id == session.session_id">
+
+                        <ion-card-header no-padding style="color: white" text-wrap>
+                          <h2><b text-center>{{item.ac_s_time| moment:'HH:mm'}} - {{item.ac_e_time| moment:'HH:mm'}}<br>
+                            Session : {{session.session_name}}<br>
+                            Room : {{item.room_name}}</b></h2>
+                        </ion-card-header>
+
+                      </div>
+                    </div>
+                  </ion-navbar>
+
+
+
+
+              <div text-wrap no-border  *ngFor="let Paper of activityPaper">
+                <div no-border no-lines *ngIf="item.ac_id == Paper.ac_id">
+                  <ion-list>
+
+                    <ion-item-sliding #slidingItem>
+                  <ion-item text-center >
+                    <ion-navbar style="color: darkslategrey" text-wrap>
+                    <b>{{Paper.paper_stime| moment:'HH:mm'}} - {{Paper.paper_etime| moment:'HH:mm'}}</b></ion-navbar>
+                  </ion-item>
+
+                      <ion-item-options side="left" >
+                        <button ion-button color="secondary" (click)="favorite_Paper(slidingItem,Paper)">Favorite</button>
+                      </ion-item-options>
+                    </ion-item-sliding>
+
+
+
+                  <ion-card-content>
+                    <p>{{Paper.paper_name}}</p>
+                  </ion-card-content>
+
+                  </ion-list>
+
+
+
+                  <ion-row mini>
+                    <ion-col>
+                      <button ion-button color="primary" (click)="goDetail(Paper,item)" clear icon-start>
+                        <ion-icon name='information-circle'></ion-icon>
+                        Detail
+                      </button>
+                    </ion-col>
+                  </ion-row>
+
+
+                </div>
+              </div>
+
+              </ion-card>
+
+
+            </div>
+        </div>
+
+      </div>
+
+
+      <!--------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-----------------------------------------------------select session activity paper--------------------------------------------------------------->
+      <div *ngIf="this.sessionName != checked">
+
+          <div *ngFor="let item of activityList">
+            <div no-border no-lines *ngIf="item.date_id == dateAc.date_id && item.session_name == this.sessionName  ">
+
+           <ion-card>
+
+                  <ion-navbar  color="body">
+                    <div *ngFor="let session of session">
+                      <div *ngIf="item.session_id == session.session_id">
+
+                        <ion-card-header no-padding style="color: white" text-wrap>
+                          <h2><b text-center>{{item.ac_s_time| moment:'HH:mm'}} - {{item.ac_e_time| moment:'HH:mm'}}<br>
+                            Session : {{session.session_name}}<br>
+                            Room : {{item.room_name}}</b></h2>
+                        </ion-card-header>
+
+                      </div>
+                    </div>
+                  </ion-navbar>
+
+
+
+
+              <div text-wrap no-border  *ngFor="let Paper of activityPaper">
+                <div no-border no-lines *ngIf="item.ac_id == Paper.ac_id">
+                  <ion-list>
+
+                    <ion-item-sliding #slidingItem>
+                  <ion-item text-center >
+                    <ion-navbar style="color: darkslategrey" text-wrap>
+                    <b>{{Paper.paper_stime| moment:'HH:mm'}} - {{Paper.paper_etime| moment:'HH:mm'}}</b></ion-navbar>
+                  </ion-item>
+
+                      <ion-item-options side="left" >
+                        <button ion-button color="secondary" (click)="favorite_Paper(slidingItem,Paper)">Favorite</button>
+                      </ion-item-options>
+                    </ion-item-sliding>
+
+
+
+                  <ion-card-content>
+                    <p>{{Paper.paper_name}}</p>
+                  </ion-card-content>
+
+                  </ion-list>
+
+
+
+                  <ion-row mini>
+                    <ion-col>
+                      <button ion-button color="primary" (click)="goDetail(Paper,item)" clear icon-start>
+                        <ion-icon name='information-circle'></ion-icon>
+                        Detail
+                      </button>
+                    </ion-col>
+                  </ion-row>
+
+
+                </div>
+              </div>
+
+              </ion-card>
+      </div>
+          </div>
+
+      </div>
+  </ion-list>
+
+</ion-content>
+
+
+
+
+
+
+

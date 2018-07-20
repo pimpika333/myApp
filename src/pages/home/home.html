@@ -1,14 +1,33 @@
+
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar color="tab">
+    <ion-title text-center>
+      KST
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+<ion-content padding >
+
+
+  <ion-list-header no-lines text-wrap text-center ion-item *ngFor="let item of yearList">
+    
+    {{welcome.toUpperCase()}}<br>
+    {{item.confer_name.toString().toUpperCase()}}
+   
+  </ion-list-header>
+
+
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label floating><p>Event Code</p></ion-label>
+        <ion-input type="text" value="" [(ngModel)]="code" ></ion-input>
+      </ion-item>
+      <button  ion-button color="bodyy" block (click)="doJoin('top')" >Join</button>
+    </ion-list>
+  </ion-card>
 </ion-content>
+

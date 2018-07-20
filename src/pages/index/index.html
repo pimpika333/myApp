@@ -1,0 +1,57 @@
+<!--
+  Generated template for the IndexPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="tab">
+    <ion-title text-center>index</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content text-center class="icons-basic-page">
+
+  <ion-list no-lines color="content">
+
+  <label ion-item *ngFor="let item of dataList">
+    <img  src="http://127.0.0.1/servicephp/images/{{item.confer_image}}"> <br>
+  <ion-card-content no-lines class="masters" text-wrap="">
+
+<ion-list-header no-border no-lines no-margin text-capitalize>
+    the {{item.confer_year}} - {{item.confer_num}}th {{kst}} {{item.confer_location}}<br>
+    {{detailConfer}}
+    {{item.confer_date_s |  date: 'MMMM dd, yyyy'}} - {{item.confer_date_e |  date: 'MMMM dd, yyyy'}}
+</ion-list-header>
+
+  </ion-card-content>
+  
+
+  </label>
+  </ion-list>
+
+
+  <p>
+    <button (click)="goDate()" ion-button outline icon-start>
+      <ion-icon name='md-calendar' color="right"></ion-icon>
+      Programme
+    </button>
+    <button (click)="goDateMyList()" ion-button outline icon-start>
+      <ion-icon name='heart' is-active="false" color="danger"></ion-icon>
+      My List
+    </button>
+  </p>
+
+
+  <ion-fab right bottom >
+    <button ion-fab color="light" ><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab color="danger" (click)="logout(item)" ion-fab><ion-icon name="md-log-out"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+
+</ion-content>

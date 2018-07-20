@@ -1,0 +1,31 @@
+<ion-header>
+<ion-navbar no-border-bottom>
+  <ion-title text-center>
+    Login
+  </ion-title>
+</ion-navbar>
+
+
+</ion-header>
+
+<ion-content>
+   
+   
+  <ion-card>
+    
+    <ion-list>
+      <ion-item>
+
+        <ion-input type="email" value="" [(ngModel)]="uname" placeholder="Email Address"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button color="primary" block (click)="signIn('top')">Next</button>
+    </div>
+
+  </ion-card>
+
+
+
+
+</ion-content>

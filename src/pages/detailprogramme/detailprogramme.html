@@ -1,0 +1,114 @@
+<ion-header>
+
+  <ion-navbar color="tab">
+    <ion-title text-center>Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content text-wrap>
+  <div *ngIf="detailAC != undefined && detailPaper != undefined">
+  <ion-list no-border>
+
+  <ion-list-header text-center >
+    <ion-badge no-margin>
+    {{detailAC.date_day |  date: 'MMMM dd, yyyy'}}
+    </ion-badge>
+  </ion-list-header>
+
+
+<ion-list>
+<ion-item>
+<ion-avatar no-lines>
+    <ion-list>
+      <ion-header>
+        <ion-navbar text-center color="body">
+
+          <b style="color: white">{{detailPaper.paper_stime| moment:'HH:mm'}} - {{detailPaper.paper_etime| moment:'HH:mm'}}</b>
+
+
+        </ion-navbar>
+      </ion-header>
+    </ion-list>
+</ion-avatar>
+
+
+
+  <ion-list no-lines>
+      <div *ngIf="detailAC.ac_id == detailPaper.ac_id">
+        <h2 text-center>
+          {{detailPaper.paper_name}}<br>
+        </h2>
+        <ion-item>
+        Session : {{detailAC.session_name}}<br>
+        Room : {{detailAC.room_name}}
+        </ion-item>
+        <div *ngFor="let Speaker of speaker">
+          <div *ngFor="let personStatus of person_status">
+          <div *ngIf="Speaker.speaker_id == detailPaper.speaker_id && personStatus.per_stasus_id == Speaker.per_status_id">
+            Speaker : {{personStatus.person_id}}
+
+          </div>
+          </div>
+        </div>
+
+      </div>
+  
+  </ion-list>
+
+
+
+</ion-item>
+</ion-list>
+  </ion-list>
+  </div>
+
+
+<!------------------------------------------detail other------------------------------------------>
+  <div *ngIf="detailOther != undefined">
+    <ion-list no-border>
+
+      <ion-list-header text-center >
+        <ion-badge no-margin>
+          {{detailOther.date_day |  date: 'MMMM dd, yyyy'}}
+        </ion-badge>
+      </ion-list-header>
+
+      <ion-list>
+        <ion-item>
+          <ion-avatar no-lines>
+            <ion-list>
+              <ion-header>
+                <ion-navbar text-center color="body">
+
+                  <b style="color: white">{{detailOther.aco_s_time| moment:'HH:mm'}} - {{detailOther.aco_e_time| moment:'HH:mm'}}</b>
+
+                </ion-navbar>
+              </ion-header>
+            </ion-list>
+          </ion-avatar>
+
+
+        
+          <ion-list no-lines>
+              <div>
+                <h2 text-center>
+                  {{detailOther.aco_name}}<br>
+                </h2>
+                <ion-item>
+                Session : {{detailOther.session_name}}<br>
+                Room : {{detailOther.room_name}}<br>
+              </ion-item>
+              </div>
+          </ion-list>
+        
+        </ion-item>
+      </ion-list>
+    </ion-list>
+  </div>
+
+
+
+
+</ion-content>

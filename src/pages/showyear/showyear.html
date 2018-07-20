@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ShowyearPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="tab">
+    <ion-title >KST</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+        <!--<ion-list>-->
+          <!--<button  (click)="goHome({year:year})" ion-item *ngFor="let item of yearList">-->
+            <!--<ion-card-content text-wrap=""><h1>{{item.confer_name}}</h1><br>-->
+              <!--<h2>{{item.confer_year}}</h2></ion-card-content>-->
+          <!--</button>-->
+        <!--</ion-list>-->
+
+
+
+    <ion-list>
+      <button ion-item *ngFor="let year of yearList" (click)="goHome(year)" >
+        <h1 text-wrap="">{{year.confer_name}}</h1>
+        <h2>{{ year.confer_year}}</h2>
+      </button>
+    </ion-list>
+
+
+
+
+
+</ion-content>

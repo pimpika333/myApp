@@ -1,0 +1,251 @@
+<ion-header>
+  <ion-navbar color="tab">
+    <ion-title class="title" text-center>
+      my list
+    </ion-title>
+  </ion-navbar>
+
+
+  <ion-toolbar no-border-top>
+      <ion-item no-lines>
+        <ion-label placeholder="">  Select Session  </ion-label>
+        <ion-select  [(ngModel)]="sessionName" (ionChange)="selectSession()" >
+          <ion-option *ngFor="let itemSession of session" [value]="itemSession.session_name" >
+            {{itemSession.session_name}}
+          </ion-option>
+
+          <ion-option  [value]="all" >
+            {{all}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-toolbar>
+
+
+
+</ion-header>
+
+
+
+<ion-content text-wrap text-center>
+<!----------------------------------------------select session-------------------------------------->
+  <!--<ion-navbar color="tab">-->
+    <!--<ion-list>-->
+      <!--<ion-item  >-->
+        <!--<ion-label > &#45;&#45; Select Session &#45;&#45; </ion-label>-->
+        <!--<ion-select  [(ngModel)]="sessionName" (ionChange)="selectSession()" >-->
+          <!--<ion-option *ngFor="let itemSession of session" [value]="itemSession.session_name" >-->
+            <!--{{itemSession.session_name}}-->
+          <!--</ion-option>-->
+
+          <!--<ion-option  [value]="all" >-->
+            <!--{{all}}-->
+          <!--</ion-option>-->
+        <!--</ion-select>-->
+      <!--</ion-item>-->
+    <!--</ion-list>-->
+  <!--</ion-navbar>-->
+  <!----------------------------------------------select session-------------------------------------->
+
+
+  <ion-list no-border>
+
+    <ion-list-header>
+  <ion-badge no-margin>
+    {{dateMylist.date_day |  date: 'MMMM dd, yyyy'}}<br>
+  </ion-badge>
+    </ion-list-header>
+
+    <!-----------------------------------Fav aco--------------------------------------->
+    <div  *ngIf="this.sessionName == checked || this.sessionName == all">
+      <ion-list *ngFor="let item of activityOther">
+        <ion-list no-border  *ngFor="let favAco of Fav_aco">
+        <ion-item no-border no-lines *ngIf="favAco.aco_id == item.aco_id && item.date_id == dateMylist.date_id">
+
+          <ion-avatar>
+            <ion-list>
+              <ion-header >
+                <ion-navbar text-center sticky>
+                  <b style="color: dark" text-wrap>{{item.aco_s_time| moment:'HH:mm'}} - {{item.aco_e_time| moment:'HH:mm'}}</b>
+
+                  <ion-buttons end *ngIf="item.aco_id != null">
+
+                        <button id="1" #first ion-button icon-only color="danger" (click)="likeOther(item,first)"><ion-icon name="heart"></ion-icon></button>
+
+                  </ion-buttons>
+
+
+                </ion-navbar>
+              </ion-header>
+            </ion-list>
+          </ion-avatar>
+
+          <h1 no-border *ngFor=" let i of activityOther">
+            <h2 text-center *ngIf="item.aco_id == i.aco_id  ">
+              {{i.aco_name}}<br>
+            </h2>
+            <ion-item no-lines no-border *ngIf="item.aco_id == i.aco_id ">
+              Session : {{i.session_name}}<br>
+              Room : {{i.room_name}}
+            </ion-item>
+          </h1>
+
+        </ion-item>
+        </ion-list>
+      </ion-list>
+    </div>
+
+    <!--select session-->
+    <div  *ngIf="this.sessionName != checked ">
+      <ion-list *ngFor="let item of activityOther">
+
+        <ion-list no-border  *ngFor="let favAco of Fav_aco">
+          <ion-item no-border no-lines *ngIf="favAco.aco_id == item.aco_id && item.date_id == dateMylist.date_id && item.session_name == this.sessionName">
+
+            <ion-avatar>
+              <ion-list>
+                <ion-header >
+                  <ion-navbar text-center sticky>
+                    <b style="color: dark" text-wrap>{{item.aco_s_time| moment:'HH:mm'}} - {{item.aco_e_time| moment:'HH:mm'}}</b>
+
+                    <ion-buttons end *ngIf="item.aco_id != null">
+
+                      <button id="1" #first ion-button icon-only color="danger" (click)="likeOther(item,first)"><ion-icon name="heart"></ion-icon></button>
+
+                    </ion-buttons>
+
+
+                  </ion-navbar>
+                </ion-header>
+              </ion-list>
+            </ion-avatar>
+
+            <h1 no-border *ngFor=" let i of activityOther">
+              <h2 text-center *ngIf="item.aco_id == i.aco_id  ">
+                {{i.aco_name}}<br>
+              </h2>
+              <ion-item no-lines no-border *ngIf="item.aco_id == i.aco_id ">
+                Session : {{i.session_name}}<br>
+                Room : {{i.room_name}}
+              </ion-item>
+            </h1>
+
+          </ion-item>
+        </ion-list>
+
+      </ion-list>
+    </div>
+
+    <!-----------------------------------Fav aco--------------------------------------->
+
+
+    <!-----------------------------------Fav paper--------------------------------------->
+
+    <div  *ngIf="this.sessionName == checked || this.sessionName == all">
+      <div *ngFor="let Activity of activity">
+      <ion-list *ngFor="let paper of activityPaper">
+
+        <ion-list no-border  *ngFor="let favPaper of Fav_paper">
+          <ion-item no-border no-lines *ngIf="favPaper.paper_id == paper.paper_id && Activity.ac_id == paper.ac_id">
+            <ion-avatar>
+              <ion-list>
+                <ion-header >
+                  <ion-navbar text-center sticky>
+                    <b style="color: dark" text-wrap>{{paper.paper_stime| moment:'HH:mm'}} - {{paper.paper_etime| moment:'HH:mm'}}</b>
+
+                    <ion-buttons end *ngIf="paper.paper_id != null">
+
+                      <button id="1" #first ion-button icon-only color="danger" (click)="likePaper(paper,first)"><ion-icon name="heart"></ion-icon></button>
+
+                    </ion-buttons>
+
+
+                  </ion-navbar>
+                </ion-header>
+              </ion-list>
+            </ion-avatar>
+
+
+            <ion-list no-lines>
+            <div text-center>
+            {{paper.paper_name}}<br>
+            </div>
+              <ion-item no-lines no-border>
+            Session : {{Activity.session_name}}<br>
+            Room : {{Activity.room_name}}
+              </ion-item>
+
+            </ion-list>
+
+
+          </ion-item>
+        </ion-list>
+
+      </ion-list>
+      </div>
+    </div>
+
+    <!-----------------------------------paper select session------------------------>
+    <div  *ngIf="this.sessionName != checked">
+      <div *ngFor="let Activity of activity">
+        <ion-list *ngFor="let paper of activityPaper">
+
+          <ion-list no-border  *ngFor="let favPaper of Fav_paper">
+            <ion-item no-border no-lines *ngIf="favPaper.paper_id == paper.paper_id && Activity.ac_id == paper.ac_id && Activity.session_name == this.sessionName">
+              <ion-avatar>
+                <ion-list>
+                  <ion-header >
+                    <ion-navbar text-center sticky>
+                      <b style="color: dark" text-wrap>{{paper.paper_stime| moment:'HH:mm'}} - {{paper.paper_etime| moment:'HH:mm'}}</b>
+
+                      <ion-buttons end *ngIf="paper.paper_id != null">
+
+                        <button id="1" #first ion-button icon-only color="danger" (click)="likePaper(paper,first)"><ion-icon name="heart"></ion-icon></button>
+
+                      </ion-buttons>
+
+
+                    </ion-navbar>
+                  </ion-header>
+                </ion-list>
+              </ion-avatar>
+
+              <ion-list no-lines>
+                <div text-center>
+                  {{paper.paper_name}}<br>
+                </div>
+                <ion-item no-lines no-border>
+                  Session : {{Activity.session_name}}<br>
+                  Room : {{Activity.room_name}}
+                </ion-item>
+
+              </ion-list>
+
+            </ion-item>
+          </ion-list>
+
+        </ion-list>
+      </div>
+    </div>
+    <!-----------------------------------Fav paper--------------------------------------->
+
+
+  </ion-list>
+
+
+
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
