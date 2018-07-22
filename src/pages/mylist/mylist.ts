@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController ,ItemSliding} from 'ionic-angular';
 import { Events } from "ionic-angular";
 import {Storage} from "@ionic/storage";
 import {FavProvider} from "../../providers/fav/fav";
@@ -101,7 +101,7 @@ export class MylistPage {
   }
 
 
-  likeOther(item,ionicButton) {
+  likeOther(slidingItem: ItemSliding,item) {
     let prompt = this.alertCtrl.create({
       title: 'Confirm delete',
       message: "Would you like to remove this program from your favorites?",
@@ -115,7 +115,6 @@ export class MylistPage {
         {
           text: 'Ok',
           handler: data => {
-            if(ionicButton._color === 'danger')
 
               this.fav.unfavorite(item.aco_id)
                 .then((data:any)=> {
@@ -125,9 +124,8 @@ export class MylistPage {
 
                   }
                   else{
-                    ionicButton.color = 'light';
-
-
+                    console.log("unlike");
+                    slidingItem.close();
                   }
                 });
           }
@@ -139,7 +137,7 @@ export class MylistPage {
 
   }
 
-  likePaper(paper,ionicButton) {
+  likePaper(slidingItem: ItemSliding,paper) {
 
     let prompt = this.alertCtrl.create({
       title: 'Confirm delete',
@@ -154,7 +152,7 @@ export class MylistPage {
         {
           text: 'Ok',
           handler: data => {
-            if(ionicButton._color === 'danger')
+
 
               this.fav.unfavoritePaper(paper.paper_id)
                 .then((data:any)=> {
@@ -164,8 +162,8 @@ export class MylistPage {
 
                   }
                   else{
-                    ionicButton.color = 'light';
-
+                    console.log("unlike");
+                    slidingItem.close();
 
                   }
                 });
