@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-
+import { Pipe, PipeTransform ,Injectable} from '@angular/core';
+import * as moment from 'moment';
 /**
  * Generated class for the MomentPipe pipe.
  *
@@ -8,6 +8,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'moment',
 })
+@Injectable()
 export class MomentPipe implements PipeTransform {
   /**
    * Takes a value and makes it lowercase.

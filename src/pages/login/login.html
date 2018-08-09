@@ -1,30 +1,43 @@
 <ion-header>
-<ion-navbar no-border-bottom>
+<!--<ion-navbar no-border-bottom>-->
   <ion-title text-center>
-    Login
+    <!--&lt;!&ndash;Login&ndash;&gt;-->
   </ion-title>
-</ion-navbar>
+<!--</ion-navbar>-->
 
 
 </ion-header>
 
 <ion-content>
-   
-   
-  <ion-card>
-    
+
+
+  <br>
+  <img  src="http://127.0.0.1/servicephp/images/conference.gif">
+  <ion-list-header no-lines text-wrap text-center>
+  {{welcome.toUpperCase()}}
+  </ion-list-header>
+
+  <ion-card no-lines="" no-padding no-border>
+  <form [formGroup]="user" (ngSubmit)="signIn('top')" no-lines>
+
+      <ion-list>
+        <ion-item>
+          <ion-label floating><p>Email Address</p></ion-label>
+          <ion-input type="email" formControlName="email" [(ngModel)]="uname" ></ion-input>
+        </ion-item>
+      </ion-list>
     <ion-list>
       <ion-item>
-
-        <ion-input type="email" value="" [(ngModel)]="uname" placeholder="Email Address"></ion-input>
+        <ion-label floating><p>Event Code</p></ion-label>
+        <ion-input type="text" value="" formControlName="password" [(ngModel)]="code"  ></ion-input>
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button color="primary" block (click)="signIn('top')">Next</button>
+      <button type="submit" [disabled]="!user.valid" block ion-button color="bodyy">Next</button>
     </div>
+  </form>
 
   </ion-card>
-
 
 
 

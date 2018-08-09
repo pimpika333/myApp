@@ -15,8 +15,7 @@ import { DateConferPage} from '../pages/date-confer/date-confer';
 import { DetailprogrammePage} from '../pages/detailprogramme/detailprogramme';
 import { MylistPage} from '../pages/mylist/mylist';
 import { ProgrammePage} from '../pages/programme/programme';
-import { ShowyearPage} from '../pages/showyear/showyear';
-import { SelectsessionPage} from '../pages/selectsession/selectsession';
+
 import { MomentPipe} from '../pipes/moment/moment';
 import { ConferenceProvider } from '../providers/conference/conference';
 import { ActivityProvider } from '../providers/activity/activity';
@@ -35,8 +34,6 @@ import { FavProvider } from '../providers/fav/fav';
     DetailprogrammePage,
     MylistPage,
     ProgrammePage,
-    ShowyearPage,
-    SelectsessionPage,
     MomentPipe,
     LoginPage,
     DateMylistPage
@@ -57,8 +54,6 @@ import { FavProvider } from '../providers/fav/fav';
     DetailprogrammePage,
     MylistPage,
     ProgrammePage,
-    ShowyearPage,
-    SelectsessionPage,
     LoginPage,
     DateMylistPage
   ],

@@ -15,10 +15,14 @@ export class DateProvider {
     console.log('Hello DateProvider Provider');
   }
 
-  getDate(){
+  getDate(code:any){
+
     return new Promise((resolve,reject)=>{
-      this.http.get('path/to/json/file')
-      this.http.get('http://127.0.0.1/servicephp/get_date_confer.php')
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json'})};
+
+      this.http.post("http://127.0.0.1/servicephp/get_date_confer.php?code="+code,{code:code},httpOptions)
 
         .map(res => res )
         .subscribe(data => {
@@ -27,6 +31,7 @@ export class DateProvider {
           reject(error1);
         })
     });
+
   }
 
 

@@ -16,12 +16,10 @@
 <ion-content padding >
 
 
-<ion-list >
-
+<ion-list class="button-date">
     <button color="bodyy" ion-button block  (click)="goProgram(item)" *ngFor="let item of dateConfer" >
       {{item.date_day |  date: 'MMMM dd, yyyy'}}
     </button>
- 
 </ion-list>
 
 </ion-content>

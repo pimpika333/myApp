@@ -27,14 +27,14 @@ export class AuthServiceProvider {
 
   }
 
-  doLogin(uname:string,id:any){
+  doLogin(uname:string,code:any){
     return new Promise((resolve,reject)=>{
 
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json'})};
 
-      this.http.post("http://127.0.0.1/servicephp/signIn.php?uname="+uname+"&id="+id, {uname:uname,id:id}, httpOptions)
+      this.http.post("http://127.0.0.1/servicephp/signIn.php?uname="+uname+"&code="+code, {uname:uname,code:code}, httpOptions)
 
         .map(res => res )
         .subscribe(data => {

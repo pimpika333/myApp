@@ -114,6 +114,19 @@ export class ActivityProvider {
     });
   }
 
+  getChair_Session(){
+    return new Promise((resolve,reject)=>{
+      this.http.get('path/to/json/file')
+      this.http.get('http://127.0.0.1/servicephp/chair_session.php')
+
+        .map(res => res )
+        .subscribe(data => {
+          resolve(data);
+        },error1 => {
+          reject(error1);
+        })
+    });
+  }
 
 
 }

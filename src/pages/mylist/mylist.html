@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="tab">
     <ion-title class="title" text-center>
-      my list
+      My List
     </ion-title>
   </ion-navbar>
 
@@ -28,8 +28,9 @@
 
 
 <ion-content text-wrap text-center>
-
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-list no-border>
 
@@ -48,20 +49,6 @@
           <ion-avatar>
             <ion-list>
               <ion-card>
-                <!--<ion-navbar text-center sticky>-->
-                  <!--<b style="color: dark" text-wrap>{{item.aco_s_time| moment:'HH:mm'}} - {{item.aco_e_time| moment:'HH:mm'}}</b>-->
-
-                  <!--<ion-buttons end *ngIf="item.aco_id != null">-->
-
-                        <!--<button id="1" #first ion-button icon-only color="danger" (click)="likeOther(item,first)"><ion-icon name="heart"></ion-icon></button>-->
-
-                  <!--</ion-buttons>-->
-
-
-                <!--</ion-navbar>-->
-              <!--</ion-header>-->
-            <!--</ion-list>-->
-          <!--</ion-avatar>-->
 
           <ion-item-sliding  #slidingItem>
             <ion-item >
@@ -72,6 +59,9 @@
               </ion-navbar>
             </ion-item>
             <ion-item-options side="right">
+
+
+
               <button ion-button color="danger" (click)="likeOther(slidingItem,item)">Delete</button>
             </ion-item-options>
           </ion-item-sliding>
@@ -107,20 +97,7 @@
             <ion-avatar>
               <ion-list>
                 <ion-card>
-                  <!--<ion-navbar text-center sticky>-->
-                    <!--<b style="color: dark" text-wrap>{{item.aco_s_time| moment:'HH:mm'}} - {{item.aco_e_time| moment:'HH:mm'}}</b>-->
 
-                    <!--<ion-buttons end *ngIf="item.aco_id != null">-->
-
-                      <!--<button id="1" #first ion-button icon-only color="danger" (click)="likeOther(item,first)"><ion-icon name="heart"></ion-icon></button>-->
-
-                    <!--</ion-buttons>-->
-
-
-                  <!--</ion-navbar>-->
-                <!--</ion-header>-->
-              <!--</ion-list>-->
-            <!--</ion-avatar>-->
 
             <ion-item-sliding  #slidingItem>
               <ion-item >
@@ -168,15 +145,6 @@
             <ion-avatar>
               <ion-list>
                 <ion-card>
-
-                  <!--<ion-navbar text-center sticky>-->
-                    <!--<b style="color: dark" text-wrap>{{paper.paper_stime| moment:'HH:mm'}} - {{paper.paper_etime| moment:'HH:mm'}}</b>-->
-                    <!--<ion-buttons end *ngIf="paper.paper_id != null">-->
-                      <!--<button id="1" #first ion-button icon-only color="danger" (click)="likePaper(paper,first)"><ion-icon name="heart"></ion-icon></button>-->
-                    <!--</ion-buttons>-->
-                  <!--</ion-navbar>-->
-                <!--</ion-header>-->
-
                   <ion-item-sliding  #slidingItem>
                     <ion-item >
                       <ion-navbar text-center sticky>
@@ -192,15 +160,23 @@
 
 
             <ion-list no-lines>
-            <div text-center>
+            <ion-card-content text-center>
             {{paper.paper_name}}<br>
-            </div>
+            </ion-card-content>
               <ion-item no-lines no-border>
             Session : {{Activity.session_name}}<br>
             Room : {{Activity.room_name}}
               </ion-item>
 
             </ion-list>
+                  <ion-row mini>
+                    <ion-col>
+                      <button ion-button color="primary" (click)="goDetail(paper,Activity)" clear icon-start>
+                        <ion-icon name='information-circle'></ion-icon>
+                        Detail
+                      </button>
+                    </ion-col>
+                  </ion-row>
 
                 </ion-card>
               </ion-list>

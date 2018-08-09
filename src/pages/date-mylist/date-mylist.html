@@ -6,15 +6,15 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title text-center>dateMylist</ion-title>
+  <ion-navbar color="tab">
+    <ion-title text-center>Date</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list align-items-center>
+  <ion-list  class="button-date-list">
     <button color="bodyy" ion-button block  (click)="goMylist(date)" *ngFor="let date of dateMylist" >
       {{date.date_day |  date: 'MMMM dd, yyyy'}}
     </button>

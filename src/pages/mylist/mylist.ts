@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController ,ItemSliding} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController ,ItemSliding,Refresher,LoadingController} from 'ionic-angular';
 import { Events } from "ionic-angular";
 import {Storage} from "@ionic/storage";
 import {FavProvider} from "../../providers/fav/fav";
 import { ActivityProvider } from '../../providers/activity/activity';
-import { DateProvider } from '../../providers/date/date';
-/**
- * Generated class for the MylistPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {DetailprogrammePage} from "../detailprogramme/detailprogramme";
 
 @IonicPage()
 @Component({
@@ -28,7 +22,9 @@ export class MylistPage {
   activityPaper:any;
   activity:any;
   session :any;
+  id:any;
   all:any='All Session';
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -36,24 +32,25 @@ export class MylistPage {
     public storage : Storage,
     public fav : FavProvider,
     public activityProvider: ActivityProvider,
-    public alertCtrl:AlertController
+    public alertCtrl:AlertController,
+    public loadingCtrl : LoadingController
 
   ) {
-
+    this.id = localStorage.getItem('User id');
     this.dateMylist = this.navParams.get('date');
   }
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MylistPage');
-    this.fav.show_FavAco()
+    this.fav.show_FavAco(this.id)
       .then((data: any) => {
         console.log(data);
         this.Fav_aco = data;
 
       });
 
-    this.fav.show_FavPaper()
+    this.fav.show_FavPaper(this.id)
       .then((data: any) => {
         console.log(data);
         this.Fav_paper = data;
@@ -90,7 +87,6 @@ export class MylistPage {
 
   }
 
-
   selectSession(){
     if(this.sessionName==this.all){
       console.log("ALL");
@@ -100,7 +96,6 @@ export class MylistPage {
     }
   }
 
-
   likeOther(slidingItem: ItemSliding,item) {
     let prompt = this.alertCtrl.create({
       title: 'Confirm delete',
@@ -109,7 +104,6 @@ export class MylistPage {
         {
           text: 'Cancel',
           handler: data => {
-
           }
         },
         {
@@ -125,7 +119,19 @@ export class MylistPage {
                   }
                   else{
                     console.log("unlike");
+
+                    let loading = this.loadingCtrl.create({
+                      content:'Loading...',
+                      spinner:'circles'
+                    });
+                    loading.present();
                     slidingItem.close();
+                    loading.dismiss();
+                    this.fav.show_FavAco(this.id)
+                      .then((data: any) => {
+                        this.Fav_aco = data;
+                      });
+
                   }
                 });
           }
@@ -133,9 +139,19 @@ export class MylistPage {
       ]
     });
     prompt.present();
-
-
   }
+
+  doRefresh(refresher: Refresher) {
+    this.fav.show_FavAco(this.id)
+      .then((data: any) => {
+        this.Fav_aco = data;
+      setTimeout(() => {
+        refresher.complete();
+
+      }, 500);
+    });
+  }
+
 
   likePaper(slidingItem: ItemSliding,paper) {
 
@@ -163,7 +179,17 @@ export class MylistPage {
                   }
                   else{
                     console.log("unlike");
+                    let loading = this.loadingCtrl.create({
+                      content:'Loading...',
+                      spinner:'circles'
+                    });
+                    loading.present();
                     slidingItem.close();
+                    loading.dismiss();
+                    this.fav.show_FavPaper(this.id)
+                      .then((data: any) => {
+                        this.Fav_paper = data;
+                      });
 
                   }
                 });
@@ -175,4 +201,11 @@ export class MylistPage {
     prompt.present();
 
   }
+
+  goDetail(paper,Activity){
+    this.navCtrl.push(DetailprogrammePage,{Paper:paper,item:Activity})
+  }
+
+
+
 }

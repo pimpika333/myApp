@@ -24,24 +24,10 @@
 
 
 <ion-content text-center class="icons-basic-page" text-wrap >
-<!--new programme page-->
-    <!--<ion-navbar color="tab">-->
-      <!--<ion-list>-->
-        <!--<ion-item  >-->
-          <!--<ion-label > &#45;&#45; Select Session &#45;&#45; </ion-label>-->
-          <!--<ion-select  [(ngModel)]="sessionName" (ionChange)="selectSession()" >-->
-            <!--<ion-option *ngFor="let itemSession of session" [value]="itemSession.session_name" >-->
-              <!--{{itemSession.session_name}}-->
-            <!--</ion-option>-->
 
-            <!--<ion-option  [value]="all" >-->
-              <!--{{all}}-->
-            <!--</ion-option>-->
-          <!--</ion-select>-->
-        <!--</ion-item>-->
-      <!--</ion-list>-->
-    <!--</ion-navbar>-->
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-list no-border>
 
@@ -60,8 +46,6 @@
               <ion-avatar>
                 <ion-list>
                   <ion-card>
-
-
                     <ion-item-sliding  #slidingItem>
                     <ion-item >
                       <ion-navbar text-center sticky>
@@ -71,7 +55,10 @@
                       </ion-navbar>
                     </ion-item>
                     <ion-item-options side="left">
-                      <button ion-button color="secondary" (click)="favorite_aco(slidingItem,item)">Favorite</button>
+                      <!--<button ion-button color="secondary" (click)="favorite_aco(slidingItem,item)">Favorite</button>-->
+
+                      <button ion-button color="secondary" (click)="favorite_aco(slidingItem,item)" *ngIf="item.aco_s_time > time && dateAc.date_day >= today ">Favorite</button>
+                      <button ion-button color="secondary" (click)="Timeout(slidingItem,item)" *ngIf="item.aco_s_time < time || dateAc.date_day < today ">Favorite</button>
                     </ion-item-options>
                   </ion-item-sliding>
 
@@ -108,17 +95,18 @@
             <ion-avatar>
               <ion-list>
                 <ion-card>
-
                   <ion-item-sliding  #slidingItem>
-                    <ion-item>
-                      <ion-navbar text-center color="secondary">
-                        <b style="color: white" text-wrap >
+                    <ion-item >
+                      <ion-navbar text-center sticky>
+                        <b text-wrap >
                           {{item.aco_s_time }} - {{item.aco_e_time}}
                         </b>
                       </ion-navbar>
                     </ion-item>
                     <ion-item-options side="left">
-                      <button ion-button color="secondary" (click)="favorite_aco(slidingItem,item)">Favorite</button>
+                      <!--<button ion-button color="secondary" (click)="favorite_aco(slidingItem,item)">Favorite</button>-->
+                      <button ion-button color="secondary" (click)="favorite_aco(slidingItem,item)" *ngIf="item.aco_s_time > time && dateAc.date_day >= today ">Favorite</button>
+                      <button ion-button color="secondary" (click)="Timeout(slidingItem,item)" *ngIf="item.aco_s_time < time || dateAc.date_day < today ">Favorite</button>
                     </ion-item-options>
                   </ion-item-sliding>
 
@@ -131,6 +119,12 @@
                     Room : {{item.room_name}}
                   </ion-item>
 
+
+                  <button ion-button color="primary" (click)="goDetailOther(item)" clear icon-start>
+                    <ion-icon name='information-circle'></ion-icon>
+                    Detail
+                  </button>
+
                 </ion-card>
               </ion-list>
             </ion-avatar>
@@ -139,8 +133,6 @@
           </div>
         </div>
       </div>
-
-
 
 
 
@@ -181,7 +173,9 @@
                   </ion-item>
 
                       <ion-item-options side="left" >
-                        <button ion-button color="secondary" (click)="favorite_Paper(slidingItem,Paper)">Favorite</button>
+
+                        <button ion-button color="secondary" (click)="favorite_Paper(slidingItem,Paper)" *ngIf="Paper.paper_stime > time && dateAc.date_day >= today ">Favorite</button>
+                        <button ion-button color="secondary" (click)="Timeout(slidingItem,Paper)" *ngIf="Paper.paper_stime < time || dateAc.date_day < today ">Favorite</button>
                       </ion-item-options>
                     </ion-item-sliding>
 
@@ -255,7 +249,9 @@
                   </ion-item>
 
                       <ion-item-options side="left" >
-                        <button ion-button color="secondary" (click)="favorite_Paper(slidingItem,Paper)">Favorite</button>
+                        <!--<button ion-button color="secondary" (click)="favorite_Paper(slidingItem,Paper)">Favorite</button>-->
+                        <button ion-button color="secondary" (click)="favorite_Paper(slidingItem,Paper)" *ngIf="Paper.paper_stime > time && dateAc.date_day >= today ">Favorite</button>
+                        <button ion-button color="secondary" (click)="Timeout(slidingItem,Paper)" *ngIf="Paper.paper_stime < time || dateAc.date_day < today ">Favorite</button>
                       </ion-item-options>
                     </ion-item-sliding>
 

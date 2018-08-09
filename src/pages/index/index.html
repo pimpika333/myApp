@@ -6,14 +6,17 @@
 -->
 <ion-header>
 
-  <ion-navbar color="tab">
-    <ion-title text-center>index</ion-title>
+  <ion-navbar color="tab" *ngFor="let item of dataList">
+    <ion-title text-center>KST {{item.confer_year}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content text-center class="icons-basic-page">
 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list no-lines color="content">
 
   <label ion-item *ngFor="let item of dataList">
@@ -27,8 +30,6 @@
 </ion-list-header>
 
   </ion-card-content>
-  
-
   </label>
   </ion-list>
 

@@ -15,8 +15,8 @@ export class MyApp {
   dateTime:any;
   // currentUser:any
   constructor(
-    platform: Platform, 
-    statusBar: StatusBar, 
+    platform: Platform,
+    statusBar: StatusBar,
     splashScreen: SplashScreen ,
     authService : AuthServiceProvider,
     public localNotifications: LocalNotifications
@@ -36,7 +36,7 @@ export class MyApp {
     var time = h+":"+m+":"+s;
     var today = year +"-"+month +"-"+ date;
     var dateTime = today+" "+time;
-    
+
       if (localStorage.getItem('user')!= null && localStorage.getItem('code')!= null){
         this.rootPage = IndexPage;
       }
@@ -53,7 +53,14 @@ export class MyApp {
       //  });
       // }
 
+
+
+
     });
+
+
+
+
   }
 }
 

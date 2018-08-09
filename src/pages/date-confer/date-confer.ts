@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DateProvider } from '../../providers/date/date';
-import { Storage } from '@ionic/storage';
 import {ProgrammePage} from "../programme/programme";
 
 /**
@@ -18,36 +17,29 @@ import {ProgrammePage} from "../programme/programme";
 })
 export class DateConferPage {
   dateConfer: any;
+  code:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public dateProvider: DateProvider,
-    public storage: Storage
+    public dateProvider: DateProvider
   ) {
 
-
+    this.code = localStorage.getItem('code');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DateConferPage');
-    this.dateProvider.getDate()
+    // console.log('ionViewDidLoad DateConferPage');
+    this.dateProvider.getDate(this.code)
       .then((data: any) => {
-        console.log(data);
+        // console.log(data);
         this.dateConfer = data;
 
       });
-     // localStorage.dataWeb="";
-
   }
-
   goProgram(item) {
-    console.log(item);
+    // console.log(item);
     this.navCtrl.push(ProgrammePage, {item: item});
-
-
   }
-
-
 
 }
 

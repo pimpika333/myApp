@@ -42,19 +42,29 @@
         </h2>
         <ion-item>
         Session : {{detailAC.session_name}}<br>
-        Room : {{detailAC.room_name}}
-        </ion-item>
-        <div *ngFor="let Speaker of speaker">
-          <div *ngFor="let personStatus of person_status">
-          <div *ngIf="Speaker.speaker_id == detailPaper.speaker_id && personStatus.per_stasus_id == Speaker.per_status_id">
-            Speaker : {{personStatus.person_id}}
+        Room : {{detailAC.room_name}}<br>
 
+          <div *ngFor="let chair of chair_session">
+            <div *ngIf="chair.chair_session_id == detailPaper.chair_session_id">
+              Chair Session : {{chair.person_name}}<br>
+            </div>
           </div>
+
+          <div *ngFor="let Speaker of speaker">
+            <div *ngIf="Speaker.speaker_id == detailPaper.speaker_id">
+              Speaker : {{Speaker.person_name}}<br>
+            </div>
           </div>
-        </div>
+          Researcher : {{detailPaper.paper_researcher}}<br>
+          Abstract : {{detailPaper.paper_abstract}}
+
+
+        </ion-item>
+
+
 
       </div>
-  
+
   </ion-list>
 
 
@@ -90,7 +100,7 @@
           </ion-avatar>
 
 
-        
+
           <ion-list no-lines>
               <div>
                 <h2 text-center>
@@ -102,7 +112,7 @@
               </ion-item>
               </div>
           </ion-list>
-        
+
         </ion-item>
       </ion-list>
     </ion-list>

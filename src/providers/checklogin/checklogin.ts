@@ -13,22 +13,22 @@ export class CheckloginProvider {
     console.log('Hello CheckloginProvider Provider');
 
   }
-  doLogin(code:string){
-    return new Promise((resolve,reject)=>{
-
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json'})};
-
-      this.http.post("http://127.0.0.1/servicephp/somedata.php?code="+code,{code:code},httpOptions)
-        .map(res => res )
-        .subscribe(data => {
-          resolve(data);
-
-        },error => {
-          reject(error);
-        })
-    });
-}
+//   doLogin(code:string){
+//     return new Promise((resolve,reject)=>{
+//
+//       const httpOptions = {
+//         headers: new HttpHeaders({
+//           'Content-Type':  'application/json'})};
+//
+//       this.http.post("http://127.0.0.1/servicephp/somedata.php?code="+code,{code:code},httpOptions)
+//         .map(res => res )
+//         .subscribe(data => {
+//           resolve(data);
+//
+//         },error => {
+//           reject(error);
+//         })
+//     });
+// }
 
 }
