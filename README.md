@@ -4,17 +4,14 @@ conference program with ionic 3
 ## App Preview
 
 ### Login Page
-![login page](https://user-images.githubusercontent.com/38816600/42980545-079ce5bc-8c02-11e8-8807-9a1bf00bb5da.png)
+![login](https://user-images.githubusercontent.com/38816600/43886772-068ce006-9be7-11e8-8401-f8c0eb2448f5.png)
 
 ### Home Page
-![event code page](https://user-images.githubusercontent.com/38816600/42980552-0cfa93f6-8c02-11e8-94e0-b2c449cdf448.png)
-
-### Index Page
-![index page](https://user-images.githubusercontent.com/38816600/42980560-124fbd72-8c02-11e8-8310-32fac35c7b64.png)
-![logout](https://user-images.githubusercontent.com/38816600/42980666-93a33be2-8c02-11e8-92a4-222236a34916.png)
+![home](https://user-images.githubusercontent.com/38816600/43886803-1da9b5fc-9be7-11e8-8da1-39908fcc660c.png)
+![home1](https://user-images.githubusercontent.com/38816600/43886805-1f777c16-9be7-11e8-901f-c7db0218e95e.png)
 
 ### Date Conference Page
-![date confer page](https://user-images.githubusercontent.com/38816600/42980567-1d8cbb18-8c02-11e8-86e3-b9fac1e53a2f.png)
+![date](https://user-images.githubusercontent.com/38816600/43886866-41bf2e72-9be7-11e8-8368-c2e858e93c4c.png)
 
 ### Programme Page
 ![confer program other](https://user-images.githubusercontent.com/38816600/42980571-233f1588-8c02-11e8-9949-9b7e948f947a.png)
