@@ -22,7 +22,7 @@ conference program with ionic 3
 ![select session 1](https://user-images.githubusercontent.com/38816600/43889221-c73f89e2-9bed-11e8-9c64-a15fc6a2c016.png)
 
 ### Detail Page
-![detail page](https://user-images.githubusercontent.com/38816600/42980576-2a943520-8c02-11e8-9d14-e5ce95ed6568.png)
+![detail](https://user-images.githubusercontent.com/38816600/43889412-4c9c2c76-9bee-11e8-9288-23a0cd5210bf.png)
 
 ### My List Page
 ![mylist page](https://user-images.githubusercontent.com/38816600/42980657-8ddd61e2-8c02-11e8-8f5d-497285a0c56d.png)
