@@ -4,7 +4,7 @@ conference program with ionic 3
 ## App Preview
 
 ### Login Page
-![login](https://user-images.githubusercontent.com/38816600/43886772-068ce006-9be7-11e8-8401-f8c0eb2448f5.png)
+![login](https://user-images.githubusercontent.com/38816600/43891179-e418326c-9bf2-11e8-869f-65c3bc50ca32.png)
 
 ### Home Page
 ![home](https://user-images.githubusercontent.com/38816600/43886803-1da9b5fc-9be7-11e8-8da1-39908fcc660c.png)
